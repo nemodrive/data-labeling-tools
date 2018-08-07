@@ -40,18 +40,25 @@ def reconstruct():
     
     def put_video(path,out_name):
         onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
-        print (onlyfiles)
+        #print (onlyfiles)
         key=lambda word: [alphabet.index(c) for c in word]
 
         onlyfiles = sorted(onlyfiles, key=natural_keys)
 
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter(out_name,fourcc, 5.8, (1280,720))
-
+        x = 0
+        y = 0
+        for i in onlyfiles[:2]:
+            img = cv2.imread(os.path.join(path, i))
+            y = img.shape[0]
+            x = img.shape[1]
+            
+        out = cv2.VideoWriter(out_name,fourcc, 6.0, (x,y))
+        print (x,y)
         for i in onlyfiles:
             img = cv2.imread(os.path.join(path, i))
-            print(i)
-            print (img)
+            #print(i)
+            #print (img)
             out.write(img)
 
 
@@ -106,7 +113,7 @@ def duplicate():
         img = cv2.imread(os.path.join("Mask_out", i))
         for j in range(6):
             name = "Real_out/out " + str(nr) + "_mask.png"
-            print (name)
+            #print (name)
             cv2.imwrite(name,img)
             nr = nr+1
 

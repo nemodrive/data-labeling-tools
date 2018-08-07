@@ -8,7 +8,12 @@ if not os.path.exists("Output"):
 cap = cv2.VideoCapture('driving.mp4')
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 6.0, (1280,720))
+x = int( cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+y = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = cap.get(cv2.CAP_PROP_FPS)
+
+print (x,y,fps)
+out = cv2.VideoWriter('output.avi',fourcc, fps/5, (x,y))
 nr = 0
 nr2 = 0
 while(True):
