@@ -18,7 +18,11 @@ Image tools for segmentation/ detection:
              - output - image mask, so you have to parse the pixels manually for interpolation purposes
 
 Semantic segmentation project:
+
 http://www.cs.toronto.edu/polyrnn/
+
+https://github.com/scaelles/DEXTR-PyTorch
+
 https://github.com/asimonov/CarND3-P2-FCN-Semantic-Segmentation - Makes a good segmentation. Hard to train, but good results.
 
 # Object annotation
